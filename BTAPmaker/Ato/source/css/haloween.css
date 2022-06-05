@@ -1,0 +1,47 @@
+:root{
+  --text-color: #f4f4e9;
+}
+
+
+body{
+	background-color: #3c153f/*#552067*/;
+	color:var(--text-color);
+}
+
+/*ページ読み込みへのボタン*/
+    .btn_lod{
+      background-color:#f38236;
+    }
+
+/*ページ描写へのボタン*/
+    .btn_pag{
+      background-color:#60b360;
+    }
+
+/*もちものへのボタン*/
+    .btn_ite{
+      background-color:#ffbc01;
+    }
+
+/*設定へのボタン*/
+    .btn_set{
+      background-color:#000000;
+      font-weight: bold;
+      	color: #ffffff;
+    }
+
+/*ページ読み込みのinput fileのところ*/
+    .load_div{
+      border:#ffffff double 4px;
+      background-color:#794678;
+    }
+
+/*ページの選択肢*/
+    .li_sel{
+    }
+
+
+    .div_border{
+      border:#ffffff solid 3px;
+      background-color: #502947/*#794678*/;
+    }

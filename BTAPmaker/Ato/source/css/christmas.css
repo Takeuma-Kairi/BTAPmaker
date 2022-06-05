@@ -1,0 +1,55 @@
+:root{
+  --text-color: #fdfdff;
+}
+
+
+body{
+	background-color: #092315;
+	color:var(--text-color);
+}
+
+
+/*ページ読み込みへのボタン*/
+    .btn_lod{
+      background-color: #cdd6d8;
+      border: #474322 solid 1px;
+      color: #4c3410;
+    }
+
+/*ページ描写へのボタン*/
+    .btn_pag{
+      background-color:#f3bd45;
+      border: #474322 solid 1px;
+      color: #4c3410;
+    }
+
+/*もちものへのボタン*/
+    .btn_ite{
+      background-color:#cdd6d8;
+      border: #474322 solid 1px;
+      color: #4c3410;
+    }
+
+/*設定へのボタン*/
+    .btn_set{
+      background-color:#f3bd45;
+      color:#4c3410;
+      border: #474322 solid 1px;
+      font-weight: bold;
+    }
+
+/*ページ読み込みのinput fileのところ*/
+    .load_div{
+      border:#da2a04 double 4px;
+      background-color:#185034;
+    }
+
+/*もちものタグのラジオボタン*/
+    .li_sel{
+    }
+
+
+    .div_border{
+      border:#da2a04 solid 5px;
+      background-color: #054b28/*#185034*/;
+    }

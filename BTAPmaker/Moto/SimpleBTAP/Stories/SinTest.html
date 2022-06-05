@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"> <!--日本語-->
+  <title>SimpleBTAP-大陸シリーズ</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="../../source/css/mono.css" type="text/css" id="css"> <!--色合い-->
+  <link rel="stylesheet" href="../../source/css/Tsuri.css" type="text/css" id="css2"> <!--上からの吊り下げ-->
+  <link rel="shortcut icon" href="../../BTAicon.png" type="image/png"> <!--ファビコン-->
+
+  <!--script_frontier-->
+</head>
+<body id="body" style="height:100vh"><div id="div_soroe" style="overflow:auto;text-align:left;padding-left:10px;margin-top:-5px;height:100%">
+
+  <div>
+    <p>
+      <a href="../SimpleBTAPindex.html">目次へ戻る</a>
+    </p>
+  
+    <p>
+      <a href="../../index.html">元版へ戻る</a>
+    </p>
+  </div>
+  
+  <div>
+    <!--<button>もどる</button>-->
+  </div>
+  
+  <div id="desc_and_item" style="width:100%;text-align:left;">
+    <div id="d_desc_sizing">
+      <div id="d_desc">
+        <!--button_frontier-->
+      </div>
+    </div>
+
+    <hr>
+    
+    <!-- アイテム -->
+      <div id="d_item">
+        <div id="d_item_sel">
+        </div>
+        
+        <hr>
+        
+        <div id="d_item_exp">
+        </div>
+      </div>
+    </div>
+    
+    <!--============================================================-->
+    <!--設定とロード。scriptを動作させるために基本的な設定は残す。
+    また、必要ではないが、将来的に実装するかもしれない要素(セーブなど)は残した。-->
+    
+    <div id="load_and_set" style="display:none;text-align:left;">
+
+      <!-- 設定 -->
+      <div id="d_set" class="mydiv" style="height:510px;text-align:left;display:inline-block;">
+        <div id="d_sette" class="div_border" style="height:510px;overflow:auto;">
+          <p>
+					
+					<!--ページロード -->
+					<p>
+						<form id="form_page">
+							<label>ページデータファイルを選択してください<br>
+								<input id="myfile" type="file"/>
+							</label>
+						</form>
+					</p>
+					
+          <p>
+            <label>セーブデータ書き込み<br>
+              <button onclick="write_savefile()" style="border-width:1px;margin-bottom:5px;">セーブデータ取得</button>
+              <button onclick="load_savefile(document.getElementById('t_savedata').value)" style="border-width:1px;margin-bottom:5px;">再ロード</button><br>
+              <textarea id="t_savedata" rows="3" cols="20" ></textarea>
+            </label>
+          </p>
+
+          <p>
+            <label for ="savefile">セーブデータの読み込み
+                <form id="form_save">
+                  <input type="file" id="savefile"/>
+                </form>
+            </label>
+          </p>
+
+          <p>
+            <label>１つ前の状態に戻す<br>
+              <button type="button" onclick="remov()">もとに戻す</button>
+            </label>
+          </p>
+
+          <p>
+            <label>横幅の調節<br>
+              <select name="yoko" size="1" onchange="yoko_resize(this.value)">
+                <option value="1" selected>縦長</option>
+                <option value="2">正方形</option>
+								<option value="3">描写部大きく</option>
+              </select>
+            </label>
+          </p>
+
+          <p>
+            <label>左右中央揃え<br>
+              <select name="sayuchuo" size="1" onchange="sayuchuo_change(this.value)">
+                <option value="1" selected>左揃え</option>
+                <option value="2">中央揃え</option>
+                <option value="3">右揃え</option>
+              </select>
+            </label>
+          </p>
+
+          <p>
+            <label>ページ作者からのリードミー<br>
+              <input type="checkbox" id="chb_readme" onchange="get_explanation()">リードミーを得る</input>
+            </label>
+          </p>
+					
+					<p>
+            <label>イントロダクションを表示<br>
+              <input type="checkbox" id="chb_abstract" checked>イントロダクションを表示</input>
+            </label>
+          </p>
+					
+          <p>
+            <label>道具欄の表示<br>
+              <input type="checkbox" id="chb_noitem" onchange="show_item()">道具欄を非表示</input>
+            </label>
+          </p>		  
+					
+          <p>
+            <label>BTAPの描写・JSON化<br>
+              <select name="jsonize" size="1" id="jsonize_change">
+                <option value="desc" selected>描写</option>
+                <option value="json">JSON</option>
+              </select>
+            </label>
+					</p>
+        </div>
+      </div>
+    </div>
+  </div>  <!--============================================================-->
+	
+  <script src="../../source/script_SimpleBTAP.js"></script>
+  
+  <script>
+  var flgarr = [];  //フラグ
+  var itearr = [];  //アイテム[nam:名前, exp:説明, hav:true/falseで所有]
+  var fiearr = [];  //フィールド[nam:名前, exp:説明, sel:[選択肢名, 実行文章]]
+  var fie = 0;      //フィールド番号
+  var numarr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //番号配列（フラグの補助的）
+
+  var if_show_item = true;//アイテム欄の表示を行うか
+
+  var breadcrumbs = []; //セーブデータの配列。パンくず。
+
+
+  function src_moto(){
+    for(var i=0;i<itearr.length;i++){
+      var j = itearr[i]["exp"].indexOf("Assist");
+      
+      if(j != -1){
+        itearr[i]["exp"] = itearr[i]["exp"].slice(0,j) 
+                            + "../../"
+                            + itearr[i]["exp"].slice(j,itearr[i]["exp"].length);
+      }
+        //<img src='Assist/Kunugi_assist/Puba.png'>
+    }
+  }
+  
+  //cssの参照パスを変更する
+  function change_css(pat){
+    document.getElementById("css").href = pat;
+  }
+
+	</script>
+</body>
+</html>

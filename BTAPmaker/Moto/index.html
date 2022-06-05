@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"> <!--日本語-->
+  <title>TanoCont-BTAP 大陸シリーズ</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="source/css/Tsuri.css" type="text/css" id="css2"> <!--上からの吊り下げ-->
+  <link rel="stylesheet" href="source/css/mono.css" type="text/css" id="css"> <!--色合い-->
+  <link rel="shortcut icon" href="BTAicon.png" type="image/png"> <!--ファビコン-->
+
+</head>
+<body id="body" style="height:100vh"><div id="div_soroe" style="text-align:left;padding-left:5px;margin-top:-5px;height:100%">
+	<div>    <!--ボタンを揃える-->
+  <button class="btn_lod" style="width:90px;" id="btn_load_and_set" onclick="block_d_load_and_set()">読み込み</button><button class="btn_pag" style="width:90px;"id="btn_desc_and_item" onclick="block_d_desc_and_item()">ページ</button>
+  <button class="btn_command" style="left:10px;width:75px;" onclick="remov()">戻る</button><button class="btn_command" style="left:9px;width:75px;" onclick="pageskip()">スキップ</button>
+  </div>
+
+    <div style="position: relative;margin:0px;height:100%"> <!--ボタン下の本文部分をそろえる-->
+
+    <div id="load_and_set" style="display:block;text-align:left;">
+    <!--ページロード -->
+    <div id="d_load" class="mydiv" style="display:inline-block;float:left;margin-right:10px;overflow:auto">
+      <div class="load_div" style="padding:20px;height:490px;overflow-y:scroll;text-align:center;">
+        
+				<p>ページデータを選択して下さい</p>
+				<p>
+					<button onclick="load_data(Dictionary)" class="btn_story_select" style="background-color:#fdeaea;color:#ee0000;border:#e56565 solid 2px;font-weight:bold;">Dictionary</button>
+				</p>
+               
+				<p>
+		      <button onclick="load_data(Kunugi)" class="btn_story_select general_story_color">Kunugi</button>
+				</p>
+				
+				<p>
+          <button onclick="load_data(Minda)" class="btn_story_select minda1_story_color">Minda</button>
+          <button onclick="load_data(Minda2)" class="btn_story_select minda1_story_color">Minda2</button>
+          <button onclick="load_data(Inome)" class="btn_story_select minda1_story_color">Inome</button>
+						<br>
+          <button onclick="load_data(Sakuma)" class="btn_story_select minda1_story_color">Sakuma</button>
+          <button onclick="load_data(Sachi)" class="btn_story_select minda1_story_color">Sachi</button>
+          <button onclick="load_data(Baruru)" class="btn_story_select minda1_story_color">Baruru</button>
+						<br>
+		      <button onclick="load_data(Fumi)" class="btn_story_select minda1_story_color" >Fumi</button>
+          <button onclick="load_data(Suihoun)" class="btn_story_select minda1_story_color">Suihoun</button>
+          <button onclick="load_data(Ippu)" class="btn_story_select minda1_story_color" >Ippu</button>
+						<br>
+		      <button onclick="load_data(Yoshine)" class="btn_story_select minda1_story_color">Yoshine</button><br>
+        </p>
+		      <button onclick="load_data(Hitami)" class="btn_story_select minda2_story_color">Hitami</button>
+          <button onclick="load_data(Inome2)" class="btn_story_select minda2_story_color">Inome2</button>
+		      <button onclick="load_data(Minda3)" class="btn_story_select minda2_story_color">Minda3</button>
+						<br>
+		      <button onclick="load_data(Inome3)" class="btn_story_select minda2_story_color">Inome3</button>
+          <button onclick="load_data(Kurokasa)" class="btn_story_select minda2_story_color">Kurokasa</button>
+          <button onclick="load_data(Hitami2)" class="btn_story_select minda2_story_color">Hitami2</button>
+						<br>
+		      <button onclick="load_data(Minda4)" class="btn_story_select minda2_story_color">Minda4</button>
+          <button onclick="load_data(Minda5_1)" class="btn_story_select minda2_story_color">Minda5_1</button>
+          <button onclick="load_data(Minda5_2)" class="btn_story_select minda2_story_color">Minda5_2</button>
+				</p>
+        <p>
+		      <button onclick="load_data(Umiao)" class="btn_story_select general_story_color">Umiao</button>
+					<button onclick="load_data(Yoshine2)" class="btn_story_select general_story_color">Yoshine2</button>
+					<button onclick="load_data(Baseru)" class="btn_story_select general_story_color">Baseru</button>
+						<br>
+					<button onclick="load_data(Akisato)" class="btn_story_select general_story_color">Akisato</button>
+					<button onclick="load_data(Paripero)" class="btn_story_select general_story_color">Paripero</button>
+					<button onclick="load_data(Gebu)" class="btn_story_select general_story_color">Gebu</button>
+					<button onclick="load_data(Gerufaru)" class="btn_story_select general_story_color">Gerufaru</button>
+					<button onclick="load_data(Goeibara)" class="btn_story_select general_story_color">Goeibara</button>
+					<button onclick="load_data(Uzinos)" class="btn_story_select general_story_color">Uzinos</button>
+					<button onclick="load_data(Seri)" class="btn_story_select general_story_color">Seri</button>
+					<button onclick="load_data(Meiju)" class="btn_story_select general_story_color">Meiju</button>
+					<button onclick="load_data(Utagemaru)" class="btn_story_select general_story_color">Utagemaru</button>
+          <!--button_frontier-->
+				</p>
+			</div>
+		</div>
+
+
+      <!-- 設定 -->
+      <div id="d_set" class="mydiv" style="height:510px;text-align:left;display:inline-block;">
+        <div id="d_sette" class="div_border" style="height:510px;overflow:auto;">
+          <p>
+					
+					<!--ページロード -->
+					<p>
+						<form id="form_page">
+							<label>ページデータファイルを選択してください<br>
+								<input id="myfile" type="file"/>
+							</label>
+						</form>
+					</p>
+					
+          <p>
+            <label>レスポンシブル版に移行<br>
+              <a href="ResponsiveBTAP.html">ResponsiveBTAP</a>
+            </label>
+          </p>
+          <p>
+            <label>シンプル版に移行<br>
+              <a href="SimpleBTAP/SimpleBTAPindex.html">SimpleBTAP</a>
+            </label>
+          </p>
+        
+            <label>色合いを変更</br>
+              <select name="css" size="1" onchange="change_css(this.value);">
+                <optgroup label="ライト">
+                  <option value="source/css/mono.css" selected>モノクロ</option>
+                  <option value="source/css/akisame.css">秋</option>
+                  <option value="source/css/maroon.css">栗</option>
+                  <option value="source/css/mokusei.css">きんもくせい</option>
+                  <option value="source/css/haloween.css">ハロウィン</option>
+                  <option value="source/css/christmas.css">クリスマス</option>
+                  <option value="source/css/new_year.css">謹賀新年</option>
+                  <option value="source/css/rusty_lake.css">湖の四季の記憶</option>
+                  <option value="source/css/warawau.css">羽化を待つ蛹</option>
+                </optgroup>
+                  <optgroup label="ダーク">
+                  <option value="source/css/dark_mono.css">灰色</option>
+                  <option value="source/css/tukimi.css">月見</option>
+                  <option value="source/css/yozakura.css">夜桜</option>
+                  <option value="source/css/seiza.css">星座</option>
+                  <option value="source/css/GreenTea.css">新茶の季節</option>
+                  <option value="source/css/amiya.css">儚さと強さのキメラ</option>
+                </optgroup>
+              </select>
+            </label>
+          </p>
+
+					<p>
+						<label>色の詳細設定：<br>
+							<select id="selectCanvas">
+								<option value="body c">文字</option>
+								<option value="body bg">背景</option>
+								
+								<option value="lod bg">ボタン1背景</option>
+								<option value="lod c">ボタン1文字</option>
+								
+								<option value="pag bg">ボタン2背景</option>
+								<option value="pag c">ボタン2文字</option>
+								
+								<option value="load bg">読み込み部背景</option>
+								<option value="load bo">読み込み部枠</option>
+								<option value="load c">読み込み部文字</option>
+								
+								<option value="div bg">区画背景</option>
+								<option value="div bo">区画枠</option>
+								<option value="div c">区画文字</option>
+							</select>
+							
+							<input type="color" onchange="changecol(this.value)"></input>
+						</label>
+					</p>
+					
+          <p>
+            <label>セーブデータ書き込み<br>
+              <button onclick="write_savefile()" style="border-width:1px;margin-bottom:5px;">セーブデータ取得</button>
+              <button onclick="load_savefile(document.getElementById('t_savedata').value)" style="border-width:1px;margin-bottom:5px;">再ロード</button><br>
+              <textarea id="t_savedata" rows="3" cols="20" ></textarea>
+            </label>
+          </p>
+
+          <p>
+            <label for ="savefile">セーブデータの読み込み
+                <form id="form_save">
+                  <input type="file" id="savefile"/>
+                </form>
+            </label>
+          </p>
+
+          <p>
+            <label>１つ前の状態に戻す<br>
+              <button type="button" onclick="remov()">もとに戻す</button>
+            </label>
+          </p>
+
+          <p>
+            <label>横幅の調節<br>
+              <select name="yoko" size="1" onchange="yoko_resize(this.value)">
+                <option value="1" selected>縦長</option>
+                <option value="2">正方形</option>
+								<option value="3">描写部大きく</option>
+              </select>
+            </label>
+          </p>
+
+          <p>
+            <label>左右中央揃え<br>
+              <select name="sayuchuo" size="1" onchange="sayuchuo_change(this.value)">
+                <option value="1" selected>左揃え</option>
+                <option value="2">中央揃え</option>
+                <option value="3">右揃え</option>
+              </select>
+            </label>
+          </p>
+
+          <p>
+            <label>ページ作者からのリードミー<br>
+              <input type="checkbox" id="chb_readme" onchange="get_explanation()">リードミーを得る</input>
+            </label>
+          </p>
+					
+					<p>
+            <label>イントロダクションを表示<br>
+              <input type="checkbox" id="chb_abstract" checked>イントロダクションを表示</input>
+            </label>
+          </p>
+					
+          <p>
+            <label>道具欄の表示<br>
+              <input type="checkbox" id="chb_noitem" onchange="show_item()">道具欄を非表示</input>
+            </label>
+          </p>		  
+					
+					<p>
+            <label>上方向ページ積み<br>
+              <input type="checkbox" id="chb_pagestack">上方向ページ積み</input>
+            </label>
+          </p>	
+
+					<p>
+            <label>BTAPの描写・JSON化<br>
+              <select name="jsonize" size="1" id="jsonize_change">
+                <option value="desc" selected>描写</option>
+                <option value="json">JSON</option>
+              </select>
+            </label>
+					</p>
+        </div>
+      </div>
+    </div>
+    <div id="desc_and_item" style="display:none;text-align:left;">
+          <div id="d_desc_sizing" class="mydiv" style="display:block;text-align:left;float:left;margin-right:10px">
+            <div id="d_desc" class="div_border" style="height:510px;overflow:auto;">
+            </div>
+          </div>
+
+          <!-- アイテム -->
+            <div id="d_item" class="mydiv" style="display:block;text-align:left;float:right;overflow:auto">
+              <div id="d_item_sel" class="div_border" style="overflow:auto;height:257px;">
+              </div>
+              <div id="d_item_exp" class="div_border" style="overflow:auto;height:230px;border-top-width:0px;">
+              </div>
+            </div>
+    </div>
+  </div>
+	
+  <script src="source/script.js"></script>
+  <script src="StoryJS/Kunugi.js"></script>
+  <script src="StoryJS/Minda.js"></script>
+  <script src="StoryJS/Minda2.js"></script>
+  <script src="StoryJS/Minda3.js"></script>
+  <script src="StoryJS/Minda4.js"></script>
+  <script src="StoryJS/Minda5_1.js"></script>
+  <script src="StoryJS/Minda5_2.js"></script>
+  <script src="StoryJS/Ippu.js"></script>
+  <script src="StoryJS/Inome2.js"></script>
+  <script src="StoryJS/Inome3.js"></script>
+  <script src="StoryJS/Sakuma.js"></script>
+  <script src="StoryJS/Sachi.js"></script>
+  <script src="StoryJS/Baruru.js"></script>
+  <script src="StoryJS/Fumi.js"></script>
+  <script src="StoryJS/Suihoun.js"></script>
+  <script src="StoryJS/Inome.js"></script>
+  <script src="StoryJS/Yoshine.js"></script>
+  <script src="StoryJS/Hitami.js"></script>
+  <script src="StoryJS/Hitami2.js"></script>
+  <script src="StoryJS/Kurokasa.js"></script>
+  <script src="StoryJS/Umiao.js"></script>
+	<script src="StoryJS/Yoshine2.js"></script>
+	<script src="StoryJS/Dictionary.js"></script>
+	<script src="StoryJS/Baseru.js"></script>
+	<script src="StoryJS/Akisato.js"></script>
+	<script src="StoryJS/Paripero.js"></script>
+	<script src="StoryJS/Gebu.js"></script>
+	<script src="StoryJS/Gerufaru.js"></script>
+	<script src="StoryJS/Goeibara.js"></script>
+	<script src="StoryJS/Uzinos.js"></script>
+	<script src="StoryJS/Seri.js"></script>
+	<script src="StoryJS/Meiju.js"></script>
+	<script src="StoryJS/Utagemaru.js"></script>
+	<!--script_frontier-->
+	
+  <script>
+  var flgarr = [];  //フラグ
+  var itearr = [];  //アイテム[nam:名前, exp:説明, hav:true/falseで所有]
+  var fiearr = [];  //フィールド[nam:名前, exp:説明, sel:[選択肢名, 実行文章]]
+  var fie = 0;      //フィールド番号
+  var numarr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //番号配列（フラグの補助的）
+
+  var if_show_item = true;//アイテム欄の表示を行うか
+
+  var breadcrumbs = []; //セーブデータの配列。パンくず。
+
+  //cssの参照パスを変更する
+  function change_css(pat){
+    document.getElementById("css").href = pat;
+  }
+
+  //==============================================================================
+  //セーブデータ~===================================================================
+  //セーブデータを変更する。ファイルへの書き出しの
+
+  function write_savefile(){
+    try{
+      var savedata = makesave();
+      var t_savedata = document.getElementById("t_savedata")
+
+      t_savedata.innerHTML = "";
+      t_savedata.innerHTML = savedata;
+      alert("セーブデータを下に書き出しました。\nセーブファイルにペーストして上書きしてください。");
+      t_savedata.select();
+      document.execCommand("copy");
+
+    }catch{
+      alert("エラーあり。")
+    }
+  }
+
+  //セーブデータのロード
+  document.getElementById("savefile").addEventListener('change', function(evt){
+    try{
+      var myFile = document.getElementById("savefile").files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt){
+        var txt = evt.target.result;
+        load_savefile(txt);   //savefileをloadする
+      }
+      reader.readAsText(myFile, "utf-8");
+
+      document.getElementById("form_save").reset();
+    }catch{
+      alert("ファイル選択にエラーあり。");
+    }
+  });
+	
+	//==============================================================================
+  //ページデータを得る。ファイルからの読み込み
+  document.getElementById("myfile").addEventListener('change', function(evt){
+    try{
+      var myFile = document.getElementById("myfile").files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt){
+        var txt = evt.target.result;
+        load_data(txt);   //load_dataへと送る
+      }
+      reader.readAsText(myFile, "utf-8");
+      document.getElementById("form_page").reset();
+    }catch{
+      alert("ファイル選択にエラーがあります。");
+    }
+
+  });
+	
+	
+		//色の詳細設定===========================
+	function changecol(c){	//引数は色(RGB)である。コンボボックスselectCanvasで選択。
+		var arr_load = document.getElementsByClassName("load_div");
+		var arr_divbo = document.getElementsByClassName("div_border");
+		
+		switch(document.getElementById("selectCanvas").value){
+		case "body c":	//文字色
+			document.getElementById("body").style.color = c;
+			break;
+		
+		case "body bg":	//背景色
+			document.getElementById("body").style.backgroundColor = c;
+			break;
+			
+		case "lod bg":	//ボタン1背景
+			document.getElementById("btn_load_and_set").style.backgroundColor = c;
+			break;
+		
+		case "lod c":	//ボタン1文字色
+			document.getElementById("btn_load_and_set").style.color = c;
+			break;
+			
+		case "pag c":	//ボタン2背景
+			document.getElementById("btn_desc_and_item").style.color = c;
+			break;
+		
+		case "pag bg":	//ボタン2文字色
+			document.getElementById("btn_desc_and_item").style.backgroundColor = c;
+			break;
+			
+		case "load c":	//読み込み部文字色
+			for(var i=0; i< arr_load.length; i++){
+				arr_load[i].style.color = c;
+			}
+			break;
+		
+		case "load bg":	//読み込み部背景色
+			for(var i=0; i< arr_load.length; i++){
+				arr_load[i].style.backgroundColor = c;
+			}
+			break;
+			
+		case "load bo":	//読み込み部枠線色
+			for(var i=0; i< arr_load.length; i++){
+				arr_load[i].style.borderColor = c;
+			}
+			break;
+		
+		case "div c":	//区画文字色
+			for(var i= 0; i< arr_divbo.length; i++){
+				arr_divbo[i].style.color = c;
+			}
+			break;
+			
+		case "div bg":	//区画背景色
+			for(var i= 0; i< arr_divbo.length; i++){
+				arr_divbo[i].style.backgroundColor = c;
+			}
+			break;
+			
+		case "div bo":	//区画枠色
+			for(var i= 0; i< arr_divbo.length; i++){
+				arr_divbo[i].style.borderColor = c;
+			}
+			break;
+			
+		default:	//それいがいの部位の選択は不正
+			alert("error!");
+		}
+	}
+  </script>
+</body>
+</html>

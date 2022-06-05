@@ -1,0 +1,114 @@
+button{
+	border: black solid 2px;
+	position: relative;
+	height: 38px;
+	box-shadow: none;
+}
+
+/*ページ読み込みへのボタン*/
+.btn_lod{
+  width:9em;
+  border-width:1px;
+  box-sizing:border-box;
+  margin: 0px;
+	margin-top: -5px;
+	font-size: 15px;
+	box-shadow: none;
+	padding: 5px;
+	padding-bottom: 15px;
+	height: 49px;
+	left: 0px;
+}
+
+/*ページ描写へのボタン*/
+.btn_pag{\
+	margin-top: -5px;
+	width: 91px;
+	padding: 5px;
+	font-size: 15px;
+	margin: 0px;	
+	margin-top: -8px;
+	left: -2px;
+  width:9em;border-width:1px;box-sizing:border-box;left:-1px;
+}
+
+/*戻る、スキップのコマンドボタン*/
+.btn_command{
+	margin-top: -5px;
+	width: 91px;
+	padding: 5px;
+	font-size: 15px;
+	margin: 0px;
+	margin-top: -8px;
+	left: 30px;
+}
+
+/*設定へのボタン
+.btn_set{
+	margin-top: -5px;
+	width: 91px;
+	padding: 5px;
+	font-size: 15px;
+	margin: 0px;
+	margin-top: -8px;
+	width:93px;
+	left: -6px;
+		
+      font-weight: bold;
+}*/
+
+/*ページデータ選択*/
+.btn_story_select{
+	margin:5px;
+	margin-bottom:10px;
+	width:80px;
+	height:40px;
+	display:inline-block;
+}
+
+
+/*ページ読み込み、ページ描写、アイテム、設定のdiv*/
+.mydiv{
+  padding-top:10px;
+  width:360px;
+  height:550px;
+  display:none;
+}
+
+/*ページの選択肢*/   
+.li_sel{
+  font-weight: bold;
+  text-decoration: underline;
+font-size:x-large;
+}    
+   
+.div_border{
+  padding:10px;
+}
+  
+.general_story_color{
+	background-color:#243444;
+	color:#fdfdff;
+}
+
+.minda1_story_color{
+	background-color:#f4eaff;
+	color:#000000;
+}
+.minda2_story_color{
+	background-color:#ad301c;
+	color:#EEEEEE
+}
+
+
+
+:root{
+  --text-color: #000000;
+}
+
+
+/*ハイパーリンクのテキスト*/
+.hl-border{
+  border-bottom: var(--text-color) solid 1px;
+  font-weight: bold;
+}
